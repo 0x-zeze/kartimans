@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "chartjs-plugin-export": "^1.0.3"
+  }
+}

@@ -1,0 +1,162 @@
+/* Kartimans auth — simple, centered, minimal */
+
+body.bg-gradient-login {
+  min-height: 100vh;
+  margin: 0;
+  background: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  overflow-y: auto;
+}
+
+.auth-page {
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-logo {
+  margin: 0 0 20px;
+  line-height: 0;
+}
+
+.auth-logo img {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.auth-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+
+.auth-card .auth-title {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #191919;
+  text-align: center;
+}
+
+.auth-card .auth-subtitle {
+  margin: 0 0 22px;
+  font-size: 0.82rem;
+  color: #888888;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.auth-card .form-control {
+  height: 44px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.95rem;
+}
+
+.auth-card .form-control:focus {
+  border-color: #cc1616;
+  box-shadow: 0 0 0 3px rgba(204, 22, 22, 0.12);
+}
+
+.auth-field {
+  position: relative;
+}
+
+.auth-field .form-control {
+  padding-left: 42px;
+}
+
+.auth-field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  color: #9a9a9a;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.auth-field-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.auth-field .form-control:focus ~ .auth-field-icon,
+.auth-field:focus-within .auth-field-icon {
+  color: #cc1616;
+}
+
+.auth-card .btn-login {
+  height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: #cc1616;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.auth-card .btn-login:hover,
+.auth-card .btn-login:focus {
+  background: #a81212;
+  color: #ffffff;
+}
+
+.auth-links {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.auth-links a {
+  display: inline-block;
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+.auth-links a:hover {
+  color: #cc1616;
+  text-decoration: none;
+}
+
+.auth-card .alert {
+  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.auth-card .alert h5 {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 480px) {
+  .auth-logo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .auth-card {
+    padding: 24px 18px 20px;
+  }
+}
