@@ -3,8 +3,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>copyright &copy; 2020 - <?= SITE_NAME; ?>
-            </span>
+            <span>© <?= date('Y'); ?> Kartimans Barbershop</span>
         </div>
     </div>
 </footer>

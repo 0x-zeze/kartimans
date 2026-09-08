@@ -3,9 +3,9 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
 
         <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/'); ?>img/logo/logos.jpeg">
+            <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="Kartimans Barbershop">
         </div>
-        <div class="sidebar-brand-text mx-3">Kartimans Barber Shop</div>
+        <div class="sidebar-brand-text mx-3">Kartimans</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
@@ -41,8 +41,7 @@
             <span>Data Master</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header"></h6>
+            <div class="py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= base_url('element/simpletable'); ?>">Data Transaksi</a>
                 <a class="collapse-item" href="<?= base_url('element/databerhasil'); ?>">Data Berhasil</a>
                 <a class="collapse-item" href="<?= base_url('element/datacancel'); ?>">Data Cancel</a>
@@ -60,7 +59,6 @@
         </a>
     </li>
     <?php endif; ?>
-    <hr class="sidebar-divider">
     <hr class="sidebar-divider">
 </ul>
 <!-- Sidebar -->

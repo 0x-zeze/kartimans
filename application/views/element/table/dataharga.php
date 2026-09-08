@@ -1,7 +1,10 @@
  <!-- Container Fluid-->
  <div class="container-fluid" id="container-wrapper">
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-         <h1 class="h3 mb-0 text-gray-800">Data Harga</h1>
+         <div>
+             <h1 class="h3 mb-0 text-gray-800">Data Harga</h1>
+             <p class="page-kicker mb-0">Kartimans Barbershop</p>
+         </div>
          <a href="<?= base_url('element/form_tambah') ?>" class="btn btn-primary btn-sm ml-2">
     <i class="fas fa-plus"></i> Tambah Data
 </a>

@@ -1,6 +1,12 @@
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
-    
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <p class="page-kicker">Kartimans Barbershop</p>
+        </div>
+    </div>
+
     <div class="row mb-3">
         <!-- Earnings (Monthly) Card Example -->
         <?php $level = $this->session->userdata('level'); ?>
@@ -10,11 +16,11 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-uppercase mb-1">Pendapatan</div>
+                            <div class="text-xs font-weight-bold text-uppercase mb-1 stat-label">Pendapatan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?php echo $pendapatan->harga ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-primary"></i>
+                            <i class="fas fa-calendar fa-2x stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -26,11 +32,11 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-uppercase mb-1">Total Penjualan</div>
+                            <div class="text-xs font-weight-bold text-uppercase mb-1 stat-label">Total Penjualan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $penjualan ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                            <i class="fas fa-shopping-cart fa-2x stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -42,15 +48,11 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-uppercase mb-1">Total Pengguna</div>
+                            <div class="text-xs font-weight-bold text-uppercase mb-1 stat-label">Total Pengguna</div>
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $pengguna ?></div>
-                            <div class="mt-2 mb-0 text-muted text-xs">
-                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                                <span>Sejak Bulan Lalu</span>
-                            </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-info"></i>
+                            <i class="fas fa-users fa-2x stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -62,11 +64,11 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
+                            <div class="text-xs font-weight-bold text-uppercase mb-1 stat-label">Pending</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $pending ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clock fa-2x text-warning"></i>
+                            <i class="fas fa-clock fa-2x stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -78,7 +80,7 @@
         <div class="col-xl-8 col-lg-7 mb-4">
             <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
+                    <h6 class="m-0 font-weight-bold">Invoice</h6>
                 </div>
                 <div class="table-responsive">
                 <?php if($level == "1" || $level == "2" || $level == "3") : ?>
@@ -161,7 +163,7 @@
         <div class="col-xl-4 col-lg-5">
             <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">JASA</h6>
+                    <h6 class="m-0 font-weight-bold">Jasa</h6>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
@@ -240,13 +242,15 @@
 
         try{
           var ask = await Swal.fire({
-            title: 'Kartimans Barber Shop',
+            title: 'Kartimans Barbershop',
             text: 'Batalkan pesanan ini?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Ya, batalkan',
             cancelButtonText: 'Batal',
-            reverseButtons: true
+            reverseButtons: true,
+            confirmButtonColor: '#cc1616',
+            cancelButtonColor: '#6c6c6c'
           });
           if (!ask.isConfirmed) return;
 
