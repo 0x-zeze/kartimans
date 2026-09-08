@@ -8,7 +8,10 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->model('Layanan');
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Layanan');
+
+        if (!$this->session->userdata('id') || !$this->session->userdata('username')) {
+            redirect('ControllerLogin');
+        }
     }
 
     public function index()
@@ -17,7 +20,7 @@ class Dashboard extends CI_Controller
             'pendapatan' => $this->Layanan->pendapatane(),
             'pending' => $this->Layanan->pendinge(),
             'listdata' => $this->Layanan->view_layanan_dash(),
-            'listdatapel' => $this->Layanan->view_layanan_dash_pel($_SESSION['username']),
+            'listdatapel' => $this->Layanan->view_layanan_dash_pel($this->session->userdata('username')),
             'penjualan' => $this->Layanan->penjualane(),
             'pengguna' => $this->Layanan->penggunane(),
             'title' => 'Dashboard',
@@ -30,7 +33,6 @@ class Dashboard extends CI_Controller
         $this->load->view('_layout/topbar', $data);
         $this->load->view('dashboard/index', $data);
         $this->load->view('_layout/footer');
-        $this->load->view('_layout/foot');
     }
 
     

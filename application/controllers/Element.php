@@ -26,6 +26,10 @@ class Element extends CI_Controller
         if (!isset($this->db)) { $this->load->database(); }
         // turn off notices for missing fonts in shared hosting
         error_reporting(E_ALL & ~E_NOTICE);
+
+        if (!$this->session->userdata('id') || !$this->session->userdata('username')) {
+            redirect('ControllerLogin');
+        }
     }
 
     /**
@@ -667,9 +671,21 @@ private function _ttfRight($im,$size,$rx,$y,$color,$font,$text){
         );
         $this->db->where('kode', $id);
         $this->db->update('jasa', $cek);
+
+        if ($this->input->is_ajax_request()) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array('ok' => true, 'status' => 'ok')));
+            return;
+        }
+
         $this->session->set_flashdata('success', 'Transaksi Berhasil Dicancel!');
 
-        redirect('element/simpletable');
+        if ($this->session->userdata('level') == '4') {
+            redirect('dashboard');
+        } else {
+            redirect('element/simpletable');
+        }
     }
 
     public function berhasildata($id)

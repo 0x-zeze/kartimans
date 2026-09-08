@@ -3,7 +3,8 @@
     
     <div class="row mb-3">
         <!-- Earnings (Monthly) Card Example -->
-        <?php if($_SESSION['level'] == "1" || $_SESSION['level'] == "2" || $_SESSION['level'] == "3") : ?>
+        <?php $level = $this->session->userdata('level'); ?>
+        <?php if($level == "1" || $level == "2" || $level == "3") : ?>
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -80,7 +81,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
                 </div>
                 <div class="table-responsive">
-                <?php if($_SESSION['level'] == "1" || $_SESSION['level'] == "2" || $_SESSION['level'] == "3") : ?>
+                <?php if($level == "1" || $level == "2" || $level == "3") : ?>
                     <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                              <tr>
@@ -111,7 +112,7 @@
                      <?php endif; ?>
 
 
-                     <?php if($_SESSION['level'] == "4") : ?>
+                     <?php if($level == "4") : ?>
 <table class="table align-items-center table-flush" id="invoice-table-level4">
   <thead class="thead-light">
     <tr>
@@ -201,45 +202,7 @@
 
 
 
-<script>
-(function() {
-  const table = document.getElementById('invoice-table-level4');
-  if (!table) return;
-  const tokenName = "<?= $this->security->get_csrf_token_name() ?>";
-  const tokenVal  = "<?= $this->security->get_csrf_hash() ?>";
-  function reindex(){
-    const rows = table.querySelectorAll('tbody tr');
-    rows.forEach((r, i) => {
-      const td = r.querySelector('td');
-      if (td) td.textContent = (i+1);
-    });
-  }
-  table.addEventListener('click', async function(e){
-    const btn = e.target.closest('.btn-cancel');
-    if (!btn) return;
-    if (!confirm('Batalkan pesanan ini?')) return;
-    const kode = btn.getAttribute('data-kode');
-    try {
-      const res = await fetch("<?= site_url('element/canceldata/') ?>" + encodeURIComponent(kode), {
-        method: 'POST',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: encodeURIComponent(tokenName) + '=' + encodeURIComponent(tokenVal)
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const row = document.getElementById('row-' + kode);
-      if (row) row.remove();
-      reindex();
-    } catch (err) {
-      alert('Gagal membatalkan. Coba lagi.');
-    }
-  });
-})();
-</script>
 
-<!-- SWEETALERT CANCEL PATCH -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script id="swal-cancel-script">
     (function(){
@@ -266,10 +229,8 @@
       }
 
       document.addEventListener('click', async function(ev){
-        var btn = ev.target.closest && ev.target.closest('.btn-cancel, .btn-danger');
+        var btn = ev.target.closest && ev.target.closest('#invoice-table-level4 .btn-cancel');
         if (!btn) return;
-        var txt = (btn.textContent || '').trim().toLowerCase();
-        if (!btn.classList.contains('btn-cancel') && txt !== 'cancel' && txt !== 'batalkan' && txt !== 'batalkan pesanan') return;
 
         var kode = extractKode(btn);
         if (!kode) return;
@@ -345,8 +306,7 @@
 
     <script>
 document.addEventListener('DOMContentLoaded', function(){
-  // Asumsi kolom 'Status' adalah kolom ke-4 (No, Kode, Nama, Status, ...)
-  var table = document.getElementById('invoice-table') || document.querySelector('table');
+  var table = document.getElementById('invoice-table-level4');
   if (!table) return;
   var rows = table.querySelectorAll('tbody tr');
   rows.forEach(function(r){
@@ -355,7 +315,6 @@ document.addEventListener('DOMContentLoaded', function(){
       r.parentNode.removeChild(r);
     }
   });
-  // Re-index kolom "No"
   var remaining = table.querySelectorAll('tbody tr');
   remaining.forEach(function(r,i){
     var first = r.querySelector('td');

@@ -1,6 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
+
         <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/'); ?>img/logo/logos.jpeg">
         </div>
@@ -16,7 +17,8 @@
     <div class="sidebar-heading">
         Features
     </div>
-    <?php if($_SESSION['level'] == "4") : ?>
+    <?php $level = $this->session->userdata('level'); ?>
+    <?php if($level == "4") : ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('element/pesan'); ?>">
             <i class="fab fa-fw fa-wpforms"></i>
@@ -24,7 +26,7 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php if($_SESSION['level'] == "2" || $_SESSION['level'] == "3") : ?>
+    <?php if($level == "2" || $level == "3") : ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('element/form'); ?>">
             <i class="fab fa-fw fa-wpforms"></i>
@@ -32,7 +34,7 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php if($_SESSION['level'] != "4"): ?>
+    <?php if($level != "4"): ?>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true" aria-controls="collapseTable">
             <i class="fas fa-fw fa-table"></i>
@@ -50,7 +52,7 @@
         </div>
     </li>
     <?php endif; ?>
-    <?php if($_SESSION['level'] == "1" || $_SESSION['level'] == "2") : ?>
+    <?php if($level == "1" || $level == "2") : ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('element/charts'); ?>">
             <i class="fas fa-fw fa-chart-area"></i>

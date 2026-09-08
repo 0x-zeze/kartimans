@@ -97,8 +97,7 @@ class controllerLogin extends CI_Controller
 
     public function logout()
     {
-        $this->ci->session->unset_userdata('id');
-        $this->ci->session->unset_userdata('error');
+        $this->session->unset_userdata(array('id', 'level', 'username', 'error'));
         $this->cart->destroy();
         $this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
 
