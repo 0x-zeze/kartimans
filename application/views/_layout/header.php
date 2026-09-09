@@ -12,7 +12,9 @@
     <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url('assets/'); ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url('assets/'); ?>css/ruang-admin.min.css" rel="stylesheet">
-    <link href="<?= base_url('assets/'); ?>css/admin.css?v=2" rel="stylesheet">
+    <link href="<?= base_url('assets/AdminLTE/'); ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/AdminLTE/'); ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/admin.css?v=4" rel="stylesheet">
 </head>
 
 <body id="page-top" class="admin-app">

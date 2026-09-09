@@ -5,26 +5,23 @@
              <h1 class="h3 mb-0 text-gray-800">Data Harga</h1>
              <p class="page-kicker mb-0">Kartimans Barbershop</p>
          </div>
-         <a href="<?= base_url('element/form_tambah') ?>" class="btn btn-primary btn-sm ml-2">
-    <i class="fas fa-plus"></i> Tambah Data
-</a>
-         <?php
-        if ($msg = $this->session->flashdata('success')): ?>
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <h5 class="mb-1"><i class="icon fas fa-check"></i> Berhasil!</h5>
-                <?= $msg ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php endif; ?>
-
-        <?php
+         <a href="<?= base_url('element/form_tambah') ?>" class="btn btn-primary btn-sm btn-tambah-data">
+             <i class="fas fa-plus"></i> Tambah Data
+         </a>
+     </div>
+     <?php if ($msg = $this->session->flashdata('success')): ?>
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <?= $msg ?>
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+     <?php endif; ?>
+     <?php
         if ($this->session->userdata('success')) {
             $this->session->unset_userdata('success');
         }
-        ?>
-     </div>
+     ?>
 
      <div class="row">
          <div class="col-lg-12 mb-4">
@@ -33,8 +30,8 @@
                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                      <h6 class="m-0 font-weight-bold text-primary">Data Harga</h6>
                  </div>
-                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                 <div class="table-responsive p-3">
+                    <table id="example1" class="table align-items-center table-flush">
                          <thead class="thead-light">
                              <tr>
                                  <th>Nomor</th>
@@ -55,20 +52,21 @@
                                 $label_rp = 'Rp ' . number_format($angka_murni, 0, ',', '.');
                                 ?>
                                 <tr>
-                                    <td><a href="#"><?= $no++ ?></a></td>
-                                    <td><?= $value->jenis ?></td>
-                                    <td><?= $value->label ?></td>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= html_escape($value->jenis) ?></td>
+                                    <td><?= html_escape($value->label) ?></td>
                                     <td><?= $label_rp ?></td>
                                     <td>
-                                        <a href="<?= base_url('Element/edit_harga/' . $value->id) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?= base_url('Element/hapus_harga/' . $value->id) ?>" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                        <div class="table-actions">
+                                            <a href="<?= base_url('Element/edit_harga/' . $value->id) ?>" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="<?= base_url('Element/hapus_harga/' . $value->id) ?>" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php } ?>
                          </tbody>
                      </table>
                  </div>
-                 <div class="card-footer"></div>
              </div>
          </div>
      </div>
@@ -171,8 +169,8 @@ function confirmDelete(event, url) {
         text: "Data yang sudah dihapus tidak bisa dikembalikan!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
+        confirmButtonColor: '#cc1616',
+        cancelButtonColor: '#6c6c6c',
         confirmButtonText: 'Ya, hapus!',
         cancelButtonText: 'Batal'
     }).then((result) => {
@@ -192,8 +190,8 @@ function confirmDelete(event, url) {
   .custom-icon{ width:86px;height:86px;margin:0 auto 10px;border-radius:9999px;border:4px solid #f59e0b;
     display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700;color:#f59e0b;}
   .swal2-actions{ gap:12px; }
-  .swal2-styled.btn-confirm{ background:#6366f1;border:2px solid #4338ca;color:#fff;border-radius:12px;padding:10px 16px;font-weight:600; }
-  .swal2-styled.btn-cancel{ background:#9ca3af;color:#fff;border-radius:12px;padding:10px 16px;font-weight:600; }
+  .swal2-styled.btn-confirm{ background:#cc1616;border:2px solid #a81212;color:#fff;border-radius:12px;padding:10px 16px;font-weight:600; }
+  .swal2-styled.btn-cancel{ background:#6c6c6c;color:#fff;border-radius:12px;padding:10px 16px;font-weight:600; }
 </style>
 
 <script>
@@ -205,7 +203,7 @@ function confirmDelete(event, url) {
 
     e.preventDefault(); // tahan aksi default
 
-    const title = el.dataset.title || 'Kartimans Barber Shop';
+    const title = el.dataset.title || 'Kartimans Barbershop';
     const text  = el.dataset.text  || 'Hapus data ini?';
 
     // ambil URL dari href atau data-*
@@ -225,7 +223,7 @@ function confirmDelete(event, url) {
       },
       iconHtml: '',
       showCancelButton: true,
-      confirmButtonText: el.dataset.confirmText || 'Ya, batalkan',
+      confirmButtonText: el.dataset.confirmText || 'Ya, hapus',
       cancelButtonText: el.dataset.cancelText || 'Batal',
       reverseButtons: true,
       focusCancel: true,

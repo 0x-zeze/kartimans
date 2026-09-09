@@ -576,6 +576,7 @@ private function _ttfRight($im,$size,$rx,$y,$color,$font,$text){
         $this->load->view('_layout/topbar', $data);
         $this->load->view('element/table/dataharga', $data);
         $this->load->view('_layout/footer');
+        $this->load->view('_layout/foot');
     }
 
     public function datatable()

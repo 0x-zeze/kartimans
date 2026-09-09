@@ -1,9 +1,10 @@
  <!-- Container Fluid-->
  <div class="container-fluid" id="container-wrapper">
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-         <h1 class="h3 mb-0 text-gray-800">Edit User</h1>
-         <ol class="breadcrumb">
-         </ol>
+         <div>
+             <h1 class="h3 mb-0 text-gray-800">Edit User</h1>
+             <p class="page-kicker mb-0">Kartimans Barbershop</p>
+         </div>
      </div>
 
      <div class="row">

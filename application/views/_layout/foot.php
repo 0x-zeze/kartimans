@@ -1,18 +1,8 @@
 
-<script src="<?= base_url('assets/AdminLTE/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-
 <script>
     $(function() {
         if ($.fn.select2) {
             $('.select2').select2();
-        }
-
-        if ($.fn.DataTable && $('#example1').length) {
-            $('#example1').DataTable({
-                'responsive': true,
-                'autoWidth': false
-            });
         }
 
         if ($.fn.datetimepicker && $('#reservationdate').length) {

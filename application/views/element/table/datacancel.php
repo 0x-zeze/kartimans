@@ -34,12 +34,12 @@
                                 foreach ($listdata as $key => $value) {
                                 ?>
                                  <tr>
-                                     <td><a href="#"><?= $no++ ?></a></td>
-                                     <td><?= $value->kode ?></td>
-                                     <td><?= $value->nama ?></td>
-                                     <td><?= $value->status ?></td>
-                                     <td><?= $value->time ?></td>
-                                     <td><?= $value->jenis ?></td>
+                                     <td><?= $no++ ?></td>
+                                     <td><?= html_escape($value->kode) ?></td>
+                                     <td><?= html_escape($value->nama) ?></td>
+                                     <td><span class="badge badge-danger"><?= html_escape($value->status) ?></span></td>
+                                     <td><?= html_escape($value->time) ?></td>
+                                     <td><?= html_escape($value->jenis) ?></td>
                                      <td><?= "Rp " . number_format($value->harga, 0, ',', '.') ?></td>
                                  </tr>
                              <?php
