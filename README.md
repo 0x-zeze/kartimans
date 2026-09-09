@@ -1,74 +1,112 @@
-# RuangAdmin
+# Kartimans Barbershop
 
-RuangAdmin - Free Admin Control Panel Themes Based on Bootstrap 4
+Sistem informasi **Kartimans Barbershop** (Purwokerto) untuk website publik, booking/pesanan, dan panel admin.
 
--------------------
+Aplikasi ini mengelola transaksi layanan, data user, daftar harga, dan laporan. UI admin memakai tema hitam/putih/merah di atas Bootstrap 4.
 
-**RuangAdmin** is responsive admin template. Based on Bootstrap 4 Framework. Highly cusmtomizable and easy to use. 
+## Fitur
 
-!["RuangAdmin Screenshot"](https://indrijunanda.github.io/RuangAdmin/img/screenshot/ss1.png "RuangAdmin Screenshot")
+**Website publik**
+- Beranda, tentang, layanan, dan kontak
+- Tombol login ke panel admin
 
-## Table of contents
+**Panel admin**
+- Login / logout dengan session
+- Dashboard: pendapatan, total penjualan, total pengguna, pending
+- Input pesanan (kasir/admin) dan input booking (pelanggan)
+- Data Master:
+  - Data Transaksi (detail, tandai berhasil, cancel)
+  - Data Berhasil
+  - Data Cancel
+  - Data User (detail, edit, hapus)
+  - Data Harga (tambah, edit, hapus)
+- Laporan pendapatan (untuk pemilik/admin)
 
-- [Link RuangAdmin](https://github.com/indrijunanda/RuangAdmin.git)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#License)
+## Level pengguna
 
-## Installation 
+| Level | Peran     | Akses |
+|------:|-----------|--------|
+| 1     | Pemilik   | Dashboard, Data Master, Laporan |
+| 2     | Admin     | Dashboard, Input Pesanan, Data Master, Laporan |
+| 3     | Kasir     | Dashboard, Input Pesanan, Data Master |
+| 4     | Pelanggan | Dashboard, Input Booking |
 
-**Here is how :** 
+## Stack
 
-- Fork the repository
-- Clone with ```git clone https://github.com/Codeigniter-Template/Ruang-Admin-Template.git```
-- Or Download zip
+- PHP 8 + [CodeIgniter 3](https://codeigniter.com/)
+- MySQL / MariaDB (`kartimans`)
+- Bootstrap 4 (Ruang Admin sebagai base UI)
+- DataTables, Select2, Chart.js, SweetAlert2
+- mPDF untuk export PDF
 
-## Usage 
+## Struktur folder
 
-- Create a new Controller at `view/views` then put like this:
 ```
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-<div class="container-fluid" id="container-wrapper">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
-    </div>
-
-<!-- Your Content -->
-
-</div>
+application/
+  controllers/   Home, ControllerLogin, Dashboard, Element
+  models/        Layanan, Logint
+  views/         home, login, dashboard, data master, layout
+assets/          CSS, JS, gambar, plugin admin
+data.sql         Skema + data awal database
+system/          Core CodeIgniter 3
 ```
 
-- Create a new Controller at `application/controllers` then put like this:
+## Instalasi (XAMPP)
+
+1. Clone repo ke folder web server:
+
+```bash
+git clone https://github.com/0x-zeze/kartimans.git
 ```
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
 
-class Control extends CI_Controller
-{
-    public function __construct()
-    {
-        parent::__construct();
-    }
+Letakkan di `C:\xampp\htdocs\admins` (atau sesuaikan virtual host).
 
-    public function index()
-    {
-        $data['title'] = 'Dashboard';
+2. Pastikan Apache + MySQL berjalan.
 
+3. Import database:
 
-        $this->load->view('_layout/header', $data);
-        $this->load->view('_layout/sidebar', $data);
-        $this->load->view('_layout/topbar', $data);
-        $this->load->view('dashboard/index', $data);
-        $this->load->view('_layout/footer');
-    }
-}
-``` 
+```sql
+source data.sql;
+```
 
-## License
+atau lewat phpMyAdmin: buat database `kartimans`, lalu import `data.sql`.
 
-RuangAdmin is an open source and that is licensed under **[MIT](http://opensource.org/licenses/MIT)**
+4. Cek koneksi di `application/config/database.php`:
 
+```
+hostname: localhost
+username: root
+password: (kosong default XAMPP)
+database: kartimans
+```
 
+5. Buka:
+
+- Website: `http://localhost/admins/`
+- Login: `http://localhost/admins/ControllerLogin`
+
+URL mengikuti folder project. Rewrite Apache (`.htaccess`) sudah menghilangkan `index.php`.
+
+## Akun contoh (`data.sql`)
+
+| Username | Password | Level | Status    |
+|----------|----------|------:|-----------|
+| `admin`  | `123`    | 1     | Pemilik   |
+| `adm`    | `123`    | 2     | Admin     |
+| `asd`    | `asd`    | 4     | Pelanggan |
+
+Ganti password ini sebelum dipakai di lingkungan nyata. Password saat ini masih plaintext.
+
+## Catatan UI
+
+Tema admin adalah overlay di `assets/css/admin.css` (setelah `ruang-admin.min.css`). Jangan rewrite file Ruang Admin.
+
+- Login greeting muncul sekali di dashboard.
+- Alert Data User / Data Harga hanya untuk aksi CRUD.
+- `charts.php` (Laporan) belum mengikuti tema overlay.
+
+## Lisensi
+
+Kode aplikasi mengikuti lisensi repo ini. UI admin berangkat dari [RuangAdmin](https://github.com/indrijunanda/RuangAdmin) (MIT). Landing page memakai template BootstrapMade Day.
 
 
