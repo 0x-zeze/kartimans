@@ -440,6 +440,129 @@ h1.h3,
   background-color: var(--km-red) !important;
 }
 
+.jasa-card-body {
+  padding: 1.1rem 1rem 1.2rem !important;
+}
+
+.jasa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.jasa-item {
+  text-align: center;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 12px;
+  padding: 20px 10px 16px;
+  min-height: 138px;
+  background: var(--km-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.25s ease-in-out;
+  cursor: default;
+}
+
+.jasa-item .icon {
+  margin: 0 auto 12px;
+  width: 52px;
+  height: 52px;
+  padding: 14px;
+  box-sizing: border-box;
+  background: var(--km-red);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: 0.25s;
+}
+
+.jasa-item .icon svg,
+.jasa-item .icon svg.service-icon {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  display: block;
+  fill: #ffffff;
+  stroke: none;
+  flex: 0 0 22px;
+  position: relative;
+  z-index: 1;
+  transition: 0.25s ease-in-out;
+}
+
+.jasa-item .icon::before {
+  position: absolute;
+  content: "";
+  left: -7px;
+  top: -7px;
+  height: 100%;
+  width: 100%;
+  background: rgba(204, 22, 22, 0.2);
+  border-radius: 12px;
+  transition: all 0.25s ease-out;
+  transform: translateZ(-1px);
+}
+
+.jasa-item h3 {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--km-text);
+  transition: color 0.25s ease;
+}
+
+.jasa-item:hover {
+  background: var(--km-red);
+  border-color: var(--km-red);
+}
+
+.jasa-item:hover .icon {
+  background: #ffffff;
+}
+
+.jasa-item:hover .icon svg {
+  fill: var(--km-red);
+}
+
+.jasa-item:hover .icon::before {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.jasa-item:hover h3 {
+  color: #ffffff;
+}
+
+@media (max-width: 575.98px) {
+  .jasa-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .jasa-item {
+    min-height: 128px;
+    padding: 16px 8px 14px;
+  }
+
+  .jasa-item .icon {
+    width: 46px;
+    height: 46px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .jasa-item h3 {
+    font-size: 12px;
+  }
+}
+
 .alert {
   border: 0;
   border-radius: var(--km-radius-sm);

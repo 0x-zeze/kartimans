@@ -10,7 +10,7 @@
          </a>
      </div>
      <?php if ($msg = $this->session->flashdata('success')): ?>
-         <div class="alert alert-success alert-dismissible fade show" role="alert">
+         <div class="alert alert-success alert-dismissible fade show" role="alert" data-autohide="3000">
              <?= html_escape($msg) ?>
              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                  <span aria-hidden="true">&times;</span>

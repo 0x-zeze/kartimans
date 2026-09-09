@@ -174,67 +174,57 @@ $total = 0;
 foreach ($rows as $r) $total += (float)$r['harga'];
 
 // Nama Bulan (Indonesia)
-date_default_timezone_set('Asia/Jakarta');
-$bulanNama = strftime('%B %Y', strtotime($startDate));
-if (function_exists('setlocale')) {
-  @setlocale(LC_TIME, 'id_ID.UTF-8', 'Indonesian_indonesia.1252', 'id_ID', 'id');
-  $bulanNama = strftime('%B %Y', strtotime($startDate));
-}
+$namaBulanIndo = [
+  '01' => 'Januari', '02' => 'Februari', '03' => 'Maret',
+  '04' => 'April',   '05' => 'Mei',      '06' => 'Juni',
+  '07' => 'Juli',    '08' => 'Agustus',  '09' => 'September',
+  '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+];
+$mNum = date('m', strtotime($startDate));
+$yNum = date('Y', strtotime($startDate));
+$bulanNama = (isset($namaBulanIndo[$mNum]) ? $namaBulanIndo[$mNum] : date('F', strtotime($startDate))) . ' ' . $yNum;
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laporan Bulanan - <?= htmlspecialchars($SHOP_NAME) ?></title>
-  <style>
-    body{background:#f3f4f6;color:#111827;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    .page{max-width:1100px;margin:24px auto;padding:0 12px}
-    .print-card{background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,.06);padding:24px 24px 16px}
-    .print-header{display:flex;align-items:center;gap:16px;margin-bottom:6px}
-    .print-header img{height:56px;width:auto;object-fit:contain}
-    .title-wrap h3{margin:0;font-size:22px;line-height:1.2}
-    .title-wrap .subtitle{font-size:13px;color:#64748b;margin-top:2px}
-    .header-meta{display:flex;justify-content:space-between;align-items:center;margin:4px 0 10px}
-    .header-meta .bulan{font-weight:600}
-    .toolbar{display:flex;gap:8px;align-items:center}
-    .toolbar input[type="month"]{padding:6px 10px;border:1px solid #e5e7eb;border-radius:8px}
-    .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid #2563eb;background:#2563eb;color:#fff;border-radius:8px;padding:8px 12px;font-size:13px;text-decoration:none}
-    .btn.secondary{background:#fff;color:#2563eb}
-    .report-table{width:100%;border-collapse:collapse;font-size:14px}
-    .report-table th,.report-table td{border:1px solid #e5e7eb;padding:10px}
-    .report-table thead th,.report-table tfoot th{background:#f8fafc}
-    .signature-row{display:flex;justify-content:flex-end;margin-top:24px}
-    .sig{width:260px;text-align:center}
-    .sig-label{margin-bottom:40px}
-    .sig-img{height:70px;width:auto;object-fit:contain;margin:-28px auto 8px}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-</head>
-<body>
-  <div class="page">
 
-    <div class="print-card" id="monthlyReportCard">
-      <div class="print-header">
-        <img src="<?= htmlspecialchars($LOGO_URL) ?>" alt="Logo">
-        <div class="title-wrap">
-          <h3><?= htmlspecialchars($SHOP_NAME) ?></h3>
-          <div class="subtitle"><?= htmlspecialchars($SHOP_ADDR) ?></div>
-          <div class="subtitle" style="font-weight:600">(Dalam Rp)</div>
-        </div>
-      </div>
+<!-- Container Fluid -->
+<div class="container-fluid" id="container-wrapper">
+  <!-- Page Header & Action Bar -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div>
+      <h1 class="h3 mb-0 text-gray-800">Laporan</h1>
+      <p class="page-kicker mb-0">Kartimans Barbershop</p>
+    </div>
 
-      <div class="header-meta">
-        <div class="bulan">Bulan: <?= htmlspecialchars($bulanNama) ?></div>
-        <div class="toolbar">
-          <form method="get" id="monthForm">
-            <input type="month" name="month" value="<?= htmlspecialchars($month) ?>"/>
-          </form>
-          <a href="#" class="btn" id="btnExportPNG" title="Export PNG">
-            Export PNG
-          </a>
-        </div>
-      </div>
+    <!-- Toolbar Filter & Tombol Export PNG -->
+    <div class="d-flex align-items-center flex-wrap gap-2 mt-3 mt-sm-0">
+      <form method="get" id="monthForm" class="form-inline mr-2">
+        <label for="monthInput" class="mr-2 text-xs font-weight-bold text-gray-600 d-none d-md-inline">Periode:</label>
+        <input type="month" id="monthInput" name="month" class="form-control form-control-sm" value="<?= htmlspecialchars($month) ?>" style="border-radius: 8px; font-size: 13px; height: 36px;" onchange="this.form.submit();">
+      </form>
+      <button type="button" class="btn btn-sm btn-primary" id="btnExportPNG" style="background-color: #cc1616; border-color: #cc1616; font-weight: 600; border-radius: 8px; padding: 6px 14px; height: 36px; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="fas fa-file-download"></i> Export PNG
+      </button>
+    </div>
+  </div>
+
+  <!-- Wrapper Lembar Dokumen Laporan -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-xl-11">
+      <div class="report-paper-wrapper">
+        <div class="print-card" id="monthlyReportCard">
+          <!-- Kop Laporan -->
+          <div class="print-header">
+            <img src="<?= htmlspecialchars($LOGO_URL) ?>" alt="Logo Kartimans">
+            <div class="title-wrap">
+              <h3 class="shop-name"><?= htmlspecialchars($SHOP_NAME) ?></h3>
+              <div class="shop-addr"><?= htmlspecialchars($SHOP_ADDR) ?></div>
+              <div class="shop-currency">(Dalam Rp)</div>
+            </div>
+          </div>
+
+          <!-- Periode Bulan (Teks murni, tanpa kontrol/tombol) -->
+          <div class="header-meta">
+            <div class="bulan">Bulan: <?= htmlspecialchars($bulanNama) ?></div>
+          </div>
 
       <table class="report-table">
         <thead>
@@ -272,29 +262,161 @@ if (function_exists('setlocale')) {
       </table>
 
       <div class="signature-row">
-        <div class="sig">
-          <div class="sig-label"><?= htmlspecialchars($OWNER_NAME) ?></div>
+        <div class="sig-box">
+          <div class="sig-name"><?= htmlspecialchars($OWNER_NAME) ?></div>
           <img class="sig-img" src="<?= function_exists('base_url') ? base_url('assets/img/ttd.png') : 'assets/img/ttd.png' ?>" alt="Tanda tangan">
         </div>
       </div>
     </div>
-
   </div>
+</div>
+</div>
+<!---Container Fluid closed by _layout/footer.php-->
 
+<style>
+  .report-paper-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .print-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 980px;
+    padding: 32px 36px 28px 36px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .print-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .print-header img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .title-wrap .shop-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.25;
+  }
+  .title-wrap .shop-addr {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+  .title-wrap .shop-currency {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 2px;
+  }
+  .header-meta {
+    margin: 12px 0 14px 0;
+  }
+  .header-meta .bulan {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+  }
+  .report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    color: #111827;
+  }
+  .report-table th,
+  .report-table td {
+    border: 1px solid #e5e7eb;
+    padding: 9px 12px;
+    vertical-align: middle;
+  }
+  .report-table thead th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #111827;
+  }
+  .report-table tfoot th {
+    background-color: #f8fafc;
+    color: #111827;
+  }
+  .signature-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+  .sig-box {
+    width: 220px;
+    text-align: center;
+  }
+  .sig-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  .sig-img {
+    height: 66px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-  document.querySelector('input[type="month"]').addEventListener('change', function(){ document.getElementById('monthForm').submit(); });
-
-  document.getElementById('btnExportPNG').addEventListener('click', function(e){
+  document.getElementById('btnExportPNG').addEventListener('click', function(e) {
     e.preventDefault();
-    const node = document.getElementById('monthlyReportCard');
-    html2canvas(node, {scale:2}).then(function(canvas){
-      const link = document.createElement('a');
-      const yymm = "<?= preg_replace('/[^0-9\-]/','',$month) ?>".replace('-','_');
-      link.download = 'Laporan_Bulanan_'+yymm+'.png';
+    var btn = this;
+    var originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengekspor...';
+    btn.disabled = true;
+
+    var node = document.getElementById('monthlyReportCard');
+
+    html2canvas(node, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+      onclone: function(clonedDoc) {
+        var card = clonedDoc.getElementById('monthlyReportCard');
+        if (card) {
+          card.style.borderRadius = '0px';
+          card.style.boxShadow = 'none';
+          card.style.border = 'none';
+          card.style.padding = '36px 40px 32px 40px';
+          card.style.width = '960px';
+          card.style.maxWidth = '960px';
+          card.style.margin = '0 auto';
+          card.style.backgroundColor = '#ffffff';
+        }
+      }
+    }).then(function(canvas) {
+      var link = document.createElement('a');
+      var yymm = "<?= preg_replace('/[^0-9\-]/','',$month) ?>".replace('-', '_');
+      link.download = 'Laporan_Bulanan_' + yymm + '.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
+      btn.innerHTML = originalHtml;
+      btn.disabled = false;
+    }).catch(function(err) {
+      console.error('Export PNG failed:', err);
+      alert('Gagal mengekspor laporan: ' + err.message);
+      btn.innerHTML = originalHtml;
+      btn.disabled = false;
     });
   });
 </script>
-</body>
-</html>

@@ -22,13 +22,6 @@
     });
 </script>
 <script>
-    window.setTimeout(function() {
-        $('.alert').fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 3000);
-</script>
-<script>
     $('#produk').on('change', function() {
         $('.qty').html($(this).find(':selected').attr('data-qty'));
         $('.qty').val($(this).find(':selected').attr('data-qty'));

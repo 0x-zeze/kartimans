@@ -55,6 +55,21 @@
             });
         });
     });
+
+    $(function() {
+        var $alerts = $('#container-wrapper > .alert, .alert[data-autohide], .alert-dismissible:not(.card-body .alert)');
+        if ($alerts.length) {
+            $alerts.each(function() {
+                var $el = $(this);
+                var delay = parseInt($el.data('autohide'), 10) || 3000;
+                window.setTimeout(function() {
+                    $el.fadeTo(500, 0).slideUp(500, function() {
+                        $el.remove();
+                    });
+                }, delay);
+            });
+        }
+    });
 </script>
 </body>
 

@@ -8,7 +8,7 @@
     </div>
 
     <?php if ($msg = $this->session->flashdata('success')): ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" data-autohide="3000">
             <?= html_escape($msg) ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -174,33 +174,40 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold">Jasa</h6>
                 </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="small text-gray-500">Haircut (Keramas, Hair Tonic, Styling, Hot Towel)
+                <div class="card-body jasa-card-body">
+                    <div class="jasa-grid">
+                        <div class="jasa-item">
+                            <div class="icon">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                    <path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zM19 3l-6 6 2 2 7-7V3z"/>
+                                </svg>
+                            </div>
+                            <h3>Haircut (Keramas, Hair Tonic, Styling, Hot Towel)</h3>
                         </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="jasa-item">
+                            <div class="icon">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                    <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+                                </svg>
+                            </div>
+                            <h3>Basic Coloring</h3>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="small text-gray-500">Basic Coloring
+                        <div class="jasa-item">
+                            <div class="icon">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                    <path d="M5 2h14a1 1 0 0 1 1 1v3H4V3a1 1 0 0 1 1-1z"/>
+                                    <path d="M5.25 7h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7z"/>
+                                </svg>
+                            </div>
+                            <h3>Bleaching</h3>
                         </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="small text-gray-500">Bleaching
-                        </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="small text-gray-500">Shaving
-                        </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="jasa-item">
+                            <div class="icon">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                                    <path d="M3.5 3.25h17a1.25 1.25 0 0 1 0 2.5h-.75v1.5a1 1 0 0 1-1 1h-4.5V11H16a1 1 0 0 1 1 1v7.25a3 3 0 0 1-6 0V12a1 1 0 0 1 1-1h1.75V8.25h-4.5a1 1 0 0 1-1-1v-1.5h-.75a1.25 1.25 0 0 1 0-2.5z"/>
+                                </svg>
+                            </div>
+                            <h3>Shaving</h3>
                         </div>
                     </div>
                 </div>
