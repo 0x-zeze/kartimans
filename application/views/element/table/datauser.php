@@ -6,12 +6,12 @@
              <p class="page-kicker mb-0">Kartimans Barbershop</p>
          </div>
      </div>
-     <?php if ($this->session->userdata('success')) { ?>
+     <?php if ($msg = $this->session->flashdata('success')): ?>
          <div class="alert alert-success alert-dismissible fade show" role="alert">
              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-             <?= $this->session->userdata('success') ?>
+             <?= html_escape($msg) ?>
          </div>
-     <?php } ?>
+     <?php endif; ?>
 
      <div class="row">
          <div class="col-lg-12 mb-4">

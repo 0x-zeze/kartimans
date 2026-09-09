@@ -7,6 +7,15 @@
         </div>
     </div>
 
+    <?php if ($msg = $this->session->flashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= html_escape($msg) ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
     <div class="row mb-3">
         <!-- Earnings (Monthly) Card Example -->
         <?php $level = $this->session->userdata('level'); ?>

@@ -415,9 +415,9 @@ class CI_Session {
 				{
 					$_SESSION['__ci_vars'][$key] = 'old';
 				}
-				// Hacky, but 'old' will (implicitly) always be less than time() ;)
-				// DO NOT move this above the 'new' check!
-				elseif ($value < $current_time)
+				// PHP 8: 'old' < time() is false, so flashdata never expired.
+				// Tempdata still uses integer timestamps.
+				elseif ($value === 'old' || (is_int($value) && $value < $current_time))
 				{
 					unset($_SESSION[$key], $_SESSION['__ci_vars'][$key]);
 				}

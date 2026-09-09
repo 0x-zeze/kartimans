@@ -11,17 +11,12 @@
      </div>
      <?php if ($msg = $this->session->flashdata('success')): ?>
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-             <?= $msg ?>
+             <?= html_escape($msg) ?>
              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
              </button>
          </div>
      <?php endif; ?>
-     <?php
-        if ($this->session->userdata('success')) {
-            $this->session->unset_userdata('success');
-        }
-     ?>
 
      <div class="row">
          <div class="col-lg-12 mb-4">
