@@ -55,3 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['laporan/png'] = 'element/laporan_pendapatan_png';
 $route['admin/laporan/bulanan']        = 'reports/monthly';
 $route['admin/laporan/bulanan/export'] = 'reports/export_monthly_png';
+$route['booking']                  = 'booking/index';
+$route['booking/slots']            = 'booking/get_slots';
+$route['booking/submit']           = 'booking/submit';
+$route['booking/success/(:any)']   = 'booking/success/$1';

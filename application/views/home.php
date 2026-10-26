@@ -55,6 +55,7 @@
             <li><a href="#about">Tentang</a></li>
             <li><a href="#services">Layanan</a></li>
             <li><a href="#contact">Kontak</a></li>
+            <li><a href="<?= base_url('booking'); ?>" class="btn-booking-nav" style="background:#8A7055; color:#ffffff !important; padding:6px 14px; border-radius:8px; font-weight:600;"><i class="bi bi-calendar2-check me-1"></i> Booking</a></li>
             <li><a href="<?= base_url('ControllerLogin'); ?>">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -77,7 +78,10 @@
           <div class="col-lg-8">
             <h2 class="">SELAMAT DATANG</h2>
             <p>Kartimans Barbershop</p>
-            <a href="#about" class="btn-get-started">Good Looking Good Feels</a>
+            <div class="d-flex gap-2 flex-wrap">
+              <a href="<?= base_url('booking'); ?>" class="btn-get-started" style="background:#8A7055; border-color:#8A7055; color:#fff;"><i class="bi bi-calendar2-check me-1"></i> Booking Jadwal Cukur</a>
+              <a href="#about" class="btn-get-started">Good Looking Good Feels</a>
+            </div>
           </div>
         </div>
       </div>

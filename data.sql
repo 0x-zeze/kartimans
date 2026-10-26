@@ -90,3 +90,22 @@ insert  into `user`(`id_user`,`username`,`password`,`nama`,`email`,`status`,`no_
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+/* Update data.sql with new barber table & supporting columns */
+
+DROP TABLE IF EXISTS `barber`;
+
+CREATE TABLE `barber` (
+  `id_barber` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `spesialisasi` varchar(150) DEFAULT 'Hair Stylist & Grooming Specialist',
+  `foto` varchar(255) DEFAULT 'assets/img/team/team-1.jpg',
+  `pengalaman` varchar(50) DEFAULT '5+ Tahun',
+  `status` enum('aktif','nonaktif') NOT NULL DEFAULT 'aktif',
+  PRIMARY KEY (`id_barber`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `barber` (`id_barber`, `nama`, `spesialisasi`, `foto`, `pengalaman`, `status`) VALUES
+(1, 'Bagus Pamungkas', 'Master Barber & Fade Expert', 'assets/img/team/team-1.jpg', '6+ Tahun', 'aktif'),
+(2, 'Dimas Setiawan', 'Classic Cut & Hot Towel Specialist', 'assets/img/team/team-2.jpg', '4+ Tahun', 'aktif'),
+(3, 'Rian Pratama', 'Modern Textured & Beard Styling', 'assets/img/team/team-3.jpg', '3+ Tahun', 'aktif');
