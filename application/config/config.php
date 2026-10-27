@@ -23,9 +23,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']     = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$config['base_url']    .= "://".$_SERVER['HTTP_HOST'];
-$config['base_url']    .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$is_https = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on') 
+    || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+    || (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) === 'on')
+    || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+$config['base_url']     = ($is_https ? "https" : "http");
+$config['base_url']    .= "://" . ($_SERVER['HTTP_HOST'] ?? 'kartimansbarbershop.my.id');
+$config['base_url']    .= str_replace(basename($_SERVER['SCRIPT_NAME'] ?? ''), "", $_SERVER['SCRIPT_NAME'] ?? '/');
+
 
 /*
 |--------------------------------------------------------------------------
