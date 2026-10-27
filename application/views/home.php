@@ -1,324 +1,410 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * THE KARTIMANS BARBERSHOP — CENTRALIZED BUSINESS CONFIGURATION
+ * Verified Data Sources: data.sql, assets, verified location & contact
+ */
+$biz = [
+    'name'           => "The Kartimans Barbershop",
+    'brand_title'    => "Kartiman's Barbershop | Potong Rambut & Grooming Purwokerto",
+    'tagline'        => "Potongan rapi. Gaya percaya diri.",
+    'phone_display'  => "0882005518510",
+    'whatsapp_num'   => "62882005518510", // Verified without + or special chars
+    'instagram'      => "@thekartimanshaircuts",
+    'instagram_url'  => "https://instagram.com/thekartimanshaircuts",
+    'address'        => "Jl. Karangkobar, Purwanegara, Purwokerto Timur (Sebelah SMA N 2 Purwokerto), Banyumas, Jawa Tengah 53116",
+    'maps_url'       => "https://maps.google.com/?q=-7.420815,109.233802",
+    'maps_embed'     => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.400824256799!2d109.23380291057998!3d-7.4208151925587575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655e882c8e5933%3A0x11e105768180127d!2sThe%20Kartimans!5e0!3m2!1sen!2sid!4v1719481423407!5m2!1sen!2sid",
+    'hours_display'  => "Setiap Hari, 10:00 - 21:00 WIB",
+    'established'    => 2019
+];
+
+// Reusable WhatsApp URL generator
+$get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertanya tentang layanan dan jadwal booking.") use ($biz) {
+    return "https://wa.me/" . $biz['whatsapp_num'] . "?text=" . rawurlencode($message);
+};
+?>
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Kartimans Barbershop</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= html_escape($biz['brand_title']); ?></title>
+  <meta name="description" content="The Kartimans Barbershop Purwokerto — Barbershop pria modern dengan layanan potong rambut rapi, coloring, bleaching, dan shaving profesional.">
+  <meta name="theme-color" content="#F7F5F0">
 
-  <!-- Favicons -->
-  <link href="assets/img/kartimans1.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Open Graph -->
+  <meta property="og:title" content="<?= html_escape($biz['brand_title']); ?>">
+  <meta property="og:description" content="Layanan potong rambut pria profesional, nyaman, dan ramah di Purwokerto.">
+  <meta property="og:image" content="<?= base_url('assets/img/barber.jpg'); ?>">
+  <meta property="og:type" content="website">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/kartimans1.png'); ?>">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=5" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Mar 19 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Bootstrap Icons & Warm Minimalist CSS -->
+  <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>">
+  <link rel="stylesheet" href="<?= base_url('assets/css/kartimans-warm.css?v=' . time()); ?>">
 </head>
-
 <body>
 
-  <header id="header" class="header fixed-top">
-
-    <div class="branding">
-
-      <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="<?= base_url(); ?>" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="">KARTIMANS</h1>
+  <!-- Navigation Bar -->
+  <header class="km-header">
+    <div class="km-container">
+      <div class="km-nav-inner">
+        <a href="<?= base_url(); ?>" class="km-brand">
+          <img src="<?= base_url('assets/img/kartimans1.png'); ?>" alt="Logo" class="km-brand-logo">
+          <span>KARTIMANS</span>
         </a>
 
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="#hero" class="">Beranda</a></li>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#services">Layanan</a></li>
-            <li><a href="#contact">Kontak</a></li>
-            <li><a href="<?= base_url('ControllerLogin'); ?>">Login</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+        <ul class="km-nav-menu" id="kmNavMenu">
+          <li><a href="#beranda" class="km-nav-link">Beranda</a></li>
+          <li><a href="#layanan" class="km-nav-link">Layanan</a></li>
+          <li><a href="#galeri" class="km-nav-link">Galeri</a></li>
+          <li><a href="#tentang" class="km-nav-link">Tentang</a></li>
+          <li><a href="#lokasi" class="km-nav-link">Lokasi</a></li>
+          <li><a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link" style="opacity: 0.7;">Login</a></li>
+        </ul>
 
+        <div class="km-nav-actions">
+          <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
+            <i class="bi bi-whatsapp"></i> Booking via WhatsApp
+          </a>
+          <button class="km-mobile-toggle" id="kmMobileToggle" aria-label="Buka Menu">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
       </div>
     </div>
-
   </header>
 
-  <main class="main">
+  <!-- Hero Section -->
+  <section class="km-section" id="beranda" style="padding-top: 32px;">
+    <div class="km-container">
+      <div class="km-hero-grid">
+        <div>
+          <div class="km-eyebrow">The Kartimans Barbershop</div>
+          <h1 class="km-heading-lg">Potongan rapi.<br>Gaya percaya diri.</h1>
+          <p class="km-lead">
+            Temukan gaya rambut terbaik yang proporsional untukmu dengan sentuhan barber profesional, fasilitas nyaman, dan layanan ramah di pusat Purwokerto.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary">
+              <i class="bi bi-whatsapp"></i> Booking via WhatsApp
+            </a>
+            <a href="#layanan" class="km-btn km-btn-secondary">
+              Lihat Layanan & Harga
+            </a>
+          </div>
+        </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <img src="assets/img/barber.jpg" alt="" data-aos="fade-in">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-start">
-          <div class="col-lg-8">
-            <h2 class="">SELAMAT DATANG</h2>
-            <p>Kartimans Barbershop</p>
-            <div class="d-flex gap-2 flex-wrap">
-              <a href="#about" class="btn-get-started">Good Looking Good Feels</a>
+        <div class="km-hero-visual">
+          <div class="km-hero-frame">
+            <img src="<?= base_url('assets/img/barber.jpg'); ?>" alt="Interior The Kartimans Barbershop" class="km-hero-img">
+            <div class="km-hero-badge">
+              <div>
+                <p class="km-hero-badge-title"><span class="km-status-dot"></span> Buka Hari Ini</p>
+                <p class="km-hero-badge-desc"><?= html_escape($biz['hours_display']); ?></p>
+              </div>
+              <a href="#lokasi" class="km-btn km-btn-secondary km-btn-sm" style="padding: 6px 12px; font-size: 12px;">Peta</a>
             </div>
           </div>
         </div>
       </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="">Tentang Kartimans<br></span>
-        <h2 class="">Tentang Kartimans<br></h2>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/kartimans.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>KARTIMANS</h3>
-            <p class="fst-italic">
-            Pada tahun 2019, The Kartimans pertama kali didirikan di kota Purwokerto. Awalnya, The Kartimans hanya berada dirumah sendiri saja. Namun, seiring berjalannya waktu, The Kartimans mulai membuka gerai di tengah-tengah kota Purwokerto yaitu sebelah SMA N 2 Purwokerto.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>The Kartimans meyakini bahwa barbershop seharusnya tidak hanya memperhatian hasil potongan rambut saja, tetapi juga pelayanan dan kesan yang dirasakan pengunjung saat mendapatkannya.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>The Kartimans berkomitmen untuk selalu memberikan pengalaman lebih saat potong rambut serta perawatan yang berkesan kepada setiap pelanggan kami dengan pelayanan yang profesional.</span></li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Cards Section -->
-
-    <!-- Clients Section -->
-    <section id="clients" class="clients section">
-
-      <div class="container">
-
-        <div class="swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
-
-      </div>
-
-    </section><!-- /Clients Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="">Layanan</span>
-        <h2>Layanan Kartimans</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <svg class="service-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                  <path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zM19 3l-6 6 2 2 7-7V3z"/>
-                </svg>
-              </div>
-              <h3>Haircut (Keramas, Hair Tonic, Styling, Hot Towel)</h3>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <svg class="service-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                  <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
-                </svg>
-              </div>
-              <h3>Basic Coloring</h3>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <svg class="service-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                  <path d="M5 2h14a1 1 0 0 1 1 1v3H4V3a1 1 0 0 1 1-1z"/>
-                  <path d="M5.25 7h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7zm3.85 0h1.9v14.2a.95.95 0 1 1-1.9 0V7z"/>
-                </svg>
-              </div>
-              <h3>Bleaching</h3>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <svg class="service-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                  <path d="M3.5 3.25h17a1.25 1.25 0 0 1 0 2.5h-.75v1.5a1 1 0 0 1-1 1h-4.5V11H16a1 1 0 0 1 1 1v7.25a3 3 0 0 1-6 0V12a1 1 0 0 1 1-1h1.75V8.25h-4.5a1 1 0 0 1-1-1v-1.5h-.75a1.25 1.25 0 0 1 0-2.5z"/>
-                </svg>
-              </div>
-              <h3>Shaving</h3>
-            </div>
-          </div><!-- End Service Item -->
-
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section">
-
-      <img src="assets/img/barber.jpg" alt="">
-
-    </section><!-- /Call To Action Section -->
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="">Kontak</span>
-        <h2 class="">Kontak</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 align-items-stretch">
-
-          <div class="col-lg-6">
-            <div class="info-item h-100 d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt"></i>
-              <h3>Alamat</h3>
-              <p>Karangkobar, Purwanegara, Purwokerto Timur<br>x`Banyumas Regency, Central Java 53116</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item h-100 d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone"></i>
-              <h3>Hubungi Kami</h3>
-              <p>0882005518510</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item h-100 d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-instagram"></i>
-              <h3>Instagram</h3>
-              <p>@thekartimanshaircuts</p>
-            </div>
-          </div><!-- End Info Item -->
-
-        </div>
-
-        <div class="row gy-4 mt-3">
-          <div class="col-12" data-aos="fade-up" data-aos-delay="300">
-            <div class="map-embed">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.400824256799!2d109.23380291057998!3d-7.4208151925587575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655e882c8e5933%3A0x11e105768180127d!2sThe%20Kartimans!5e0!3m2!1sen!2sid!4v1719481423407!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div><!-- End Google Maps -->
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative">
-
-
-    <div class="container copyright text-center mt-4">
-      <p><strong>The Kartimans Barbershop</strong></p>
     </div>
+  </section>
 
+
+  <!-- Services Section -->
+  <section class="km-section km-section-soft" id="layanan">
+    <div class="km-container">
+      <div class="km-section-header">
+        <div class="km-eyebrow">Daftar Layanan</div>
+        <h2 class="km-heading-md">Layanan & Harga Transparan</h2>
+        <p class="km-lead">
+          Setiap paket dikerjakan dengan standar kebersihan tinggi, alat steril, dan produk perawatan berkualitas.
+        </p>
+      </div>
+
+      <div class="km-services-grid">
+        <!-- Service 1 -->
+        <div class="km-service-card">
+          <div class="km-service-top">
+            <div class="km-service-icon"><i class="bi bi-scissors"></i></div>
+            <h3 class="km-service-name">Haircut Signature</h3>
+            <p class="km-service-desc">Potong rambut rapi sesuai bentuk wajah, keramas rileks, hair tonic, styling pomade/powder, dan hot towel hangat.</p>
+          </div>
+          <div class="km-service-bottom">
+            <span class="km-service-price">Rp 25.000</span>
+            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Haircut Signature (Rp 25.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
+              Booking
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="km-service-card">
+          <div class="km-service-top">
+            <div class="km-service-icon"><i class="bi bi-palette"></i></div>
+            <h3 class="km-service-name">Basic Coloring</h3>
+            <p class="km-service-desc">Pewarnaan rambut dasar bernuansa natural (hitam pekat, cokelat tua/mocha) untuk kesegaran dan menutupi uban.</p>
+          </div>
+          <div class="km-service-bottom">
+            <span class="km-service-price">Rp 75.000</span>
+            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Basic Coloring (Rp 75.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
+              Booking
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="km-service-card">
+          <div class="km-service-top">
+            <div class="km-service-icon"><i class="bi bi-droplet-half"></i></div>
+            <h3 class="km-service-name">Hair Bleaching</h3>
+            <p class="km-service-desc">Proses lifting warna rambut bertahap untuk warna-warna terang / fashion color dengan formula proteksi rambut.</p>
+          </div>
+          <div class="km-service-bottom">
+            <span class="km-service-price">Rp 75.000</span>
+            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin konsultasi & booking layanan Bleaching (Rp 75.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
+              Booking
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="km-service-card">
+          <div class="km-service-top">
+            <div class="km-service-icon"><i class="bi bi-slash-circle"></i></div>
+            <h3 class="km-service-name">Clean Shaving</h3>
+            <p class="km-service-desc">Cukur kumis & jenggot bersih, perapihan garis jambang, softening cream, hot towel, dan aftershave soothing lotion.</p>
+          </div>
+          <div class="km-service-bottom">
+            <span class="km-service-price">Rp 25.000</span>
+            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Clean Shaving (Rp 25.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
+              Booking
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery / Lookbook Section -->
+  <section class="km-section" id="galeri">
+    <div class="km-container">
+      <div class="km-section-header">
+        <div class="km-eyebrow">Lookbook Portofolio</div>
+        <h2 class="km-heading-md">Temukan Gaya Rambut Anda</h2>
+        <p class="km-lead">
+          Koleksi hasil potongan rambut pelanggan kami di Kartimans, mulai dari taper fade, crop, classic pompadour, hingga modern side-part.
+        </p>
+      </div>
+
+      <div class="km-gallery-grid">
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-1.jpg'); ?>" alt="Model Rambut Kartimans 1" class="km-gallery-img" loading="lazy">
+        </div>
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-2.jpg'); ?>" alt="Model Rambut Kartimans 2" class="km-gallery-img" loading="lazy">
+        </div>
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-3.jpg'); ?>" alt="Model Rambut Kartimans 3" class="km-gallery-img" loading="lazy">
+        </div>
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-4.jpg'); ?>" alt="Model Rambut Kartimans 4" class="km-gallery-img" loading="lazy">
+        </div>
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-5.jpg'); ?>" alt="Model Rambut Kartimans 5" class="km-gallery-img" loading="lazy">
+        </div>
+        <div class="km-gallery-item">
+          <img src="<?= base_url('assets/img/masonry-portfolio/masonry-portfolio-6.jpg'); ?>" alt="Model Rambut Kartimans 6" class="km-gallery-img" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Barber Team Section -->
+  <section class="km-section km-section-white" id="tentang">
+    <div class="km-container">
+      <div class="km-about-grid">
+        <div class="km-about-frame">
+          <img src="<?= base_url('assets/img/about.jpg'); ?>" alt="Tentang The Kartimans" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+        </div>
+
+        <div>
+          <div class="km-eyebrow">Tentang Kami</div>
+          <h2 class="km-heading-md">Lebih dari Sekadar Potong Rambut</h2>
+          <p class="km-lead" style="font-size: 16px;">
+            Didirikan pada tahun 2019 di Purwokerto, The Kartimans bermula dari dedikasi menciptakan pengalaman pangkas rambut yang tidak hanya rapi, namun juga memberikan ketenangan dan rasa percaya diri.
+          </p>
+          <p style="color: var(--km-text-muted); font-size: 15px; margin-bottom: 24px;">
+            Kini berlokasi strategis di sebelah SMA Negeri 2 Purwokerto, kami selalu mengedepankan konsultasi gaya sebelum pangkas, higienitas perlengkapan, serta suasana ramah yang membuat Anda merasa seperti di rumah sendiri.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+            <div style="border-left: 2px solid var(--km-accent-sage); padding-left: 14px;">
+              <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 700;">Konsultasi Gaya</h4>
+              <p style="margin: 0; font-size: 13.5px; color: var(--km-text-muted);">Disesuaikan dengan tekstur rambut dan proporsi wajah.</p>
+            </div>
+            <div style="border-left: 2px solid var(--km-accent-sage); padding-left: 14px;">
+              <h4 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 700;">Higienis & Rileks</h4>
+              <p style="margin: 0; font-size: 13.5px; color: var(--km-text-muted);">Perlengkapan steril dengan relaksasi hot towel hangat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barbers Showcase -->
+      <div style="margin-top: 64px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+          <h3 class="km-heading-sm">Barber & Stylist Kami</h3>
+          <p style="font-size: 14.5px; color: var(--km-text-muted); margin: 0;">Tim profesional yang siap mewujudkan penampilan terbaik Anda.</p>
+        </div>
+
+        <div class="km-barbers-grid">
+          <div class="km-barber-card">
+            <img src="<?= base_url('assets/img/team/team-1.jpg'); ?>" alt="Bagus Pamungkas" class="km-barber-avatar">
+            <h4 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700;">Bagus Pamungkas</h4>
+            <p style="font-size: 13px; color: var(--km-accent-sage); font-weight: 600; margin: 0 0 6px 0;">Master Barber & Fade Expert</p>
+            <p style="font-size: 12.5px; color: var(--km-text-light); margin: 0;">Pengalaman 6+ Tahun</p>
+          </div>
+
+          <div class="km-barber-card">
+            <img src="<?= base_url('assets/img/team/team-2.jpg'); ?>" alt="Dimas Setiawan" class="km-barber-avatar">
+            <h4 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700;">Dimas Setiawan</h4>
+            <p style="font-size: 13px; color: var(--km-accent-sage); font-weight: 600; margin: 0 0 6px 0;">Classic Cut & Hot Towel Specialist</p>
+            <p style="font-size: 12.5px; color: var(--km-text-light); margin: 0;">Pengalaman 4+ Tahun</p>
+          </div>
+
+          <div class="km-barber-card">
+            <img src="<?= base_url('assets/img/team/team-3.jpg'); ?>" alt="Rian Pratama" class="km-barber-avatar">
+            <h4 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700;">Rian Pratama</h4>
+            <p style="font-size: 13px; color: var(--km-accent-sage); font-weight: 600; margin: 0 0 6px 0;">Modern Textured & Beard Styling</p>
+            <p style="font-size: 12.5px; color: var(--km-text-light); margin: 0;">Pengalaman 3+ Tahun</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Opening Hours Section -->
+  <section class="km-section km-section-soft" id="lokasi">
+    <div class="km-container">
+      <div class="km-section-header">
+        <div class="km-eyebrow">Kunjungi Kami</div>
+        <h2 class="km-heading-md">Lokasi & Jam Operasional</h2>
+        <p class="km-lead">
+          Temukan kami dengan mudah di pusat kota Purwokerto dengan akses parkir yang nyaman.
+        </p>
+      </div>
+
+      <div class="km-contact-grid">
+        <div class="km-contact-info-list">
+          <div class="km-contact-card">
+            <div class="km-contact-card-title"><i class="bi bi-geo-alt"></i> Alamat Gerai</div>
+            <p class="km-contact-card-val"><?= html_escape($biz['address']); ?></p>
+            <div style="margin-top: 12px;">
+              <a href="<?= $biz['maps_url']; ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-secondary km-btn-sm">
+                <i class="bi bi-box-arrow-up-right"></i> Buka di Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="km-contact-card">
+            <div class="km-contact-card-title"><i class="bi bi-clock"></i> Jam Operasional</div>
+            <p class="km-contact-card-val"><?= html_escape($biz['hours_display']); ?></p>
+            <p style="font-size: 13px; color: var(--km-text-muted); margin: 4px 0 0 0;">(Buka setiap hari)</p>
+          </div>
+
+          <div class="km-contact-card">
+            <div class="km-contact-card-title"><i class="bi bi-chat-dots"></i> Kontak & Media Sosial</div>
+            <p class="km-contact-card-val" style="margin-bottom: 8px;">
+              WhatsApp: <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;"><?= $biz['phone_display']; ?></a>
+            </p>
+            <p class="km-contact-card-val">
+              Instagram: <a href="<?= $biz['instagram_url']; ?>" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;"><?= $biz['instagram']; ?></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="km-map-container">
+          <iframe src="<?= $biz['maps_embed']; ?>" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi The Kartimans"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Call to Action -->
+  <section class="km-section" style="padding-bottom: 72px;">
+    <div class="km-container">
+      <div class="km-cta-box">
+        <h2 class="km-heading-md">Siap Tampil Lebih Fresh Hari Ini?</h2>
+        <p class="km-lead">
+          Amankan slot potong rambut Anda sekarang atau tanyakan ketersediaan kursi langsung ke WhatsApp kami.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary" style="background-color: #FFFFFF; color: #1C1C1C !important;">
+            <i class="bi bi-whatsapp"></i> Chat WhatsApp Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="km-footer">
+    <div class="km-container">
+      <div class="km-footer-inner">
+        <div>
+          <h3 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800;">The Kartimans Barbershop</h3>
+          <p style="margin: 0; font-size: 13.5px; color: var(--km-text-muted);">Good Looking, Good Feels — Purwokerto, Jawa Tengah</p>
+        </div>
+
+        <div style="display: flex; gap: 20px; font-size: 14px; flex-wrap: wrap;">
+          <a href="#beranda" class="km-nav-link">Beranda</a>
+          <a href="#layanan" class="km-nav-link">Layanan</a>
+          <a href="#galeri" class="km-nav-link">Galeri</a>
+          <a href="#tentang" class="km-nav-link">Tentang</a>
+          <a href="#lokasi" class="km-nav-link">Lokasi</a>
+          <a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link" style="opacity: 0.6;">Login</a>
+        </div>
+      </div>
+
+      <div class="km-footer-copy" style="text-align: center; padding-top: 24px; font-size: 13.5px; color: var(--km-text-light);">
+        &copy; <?= date('Y'); ?> <?= html_escape($biz['name']); ?>. Seluruh hak cipta dilindungi.
+      </div>
+    </div>
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Vanilla JavaScript for Navigation & Mobile Drawer -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('kmMobileToggle');
+      const navMenu = document.getElementById('kmNavMenu');
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+      if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener('click', function() {
+          navMenu.classList.toggle('is-active');
+          const isOpen = navMenu.classList.contains('is-active');
+          toggleBtn.setAttribute('aria-expanded', isOpen);
+          toggleBtn.innerHTML = isOpen ? '<i class="bi bi-x-lg"></i>' : '<i class="bi bi-list"></i>';
+        });
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('is-active');
+            toggleBtn.innerHTML = '<i class="bi bi-list"></i>';
+          });
+        });
+      }
+    })();
+  </script>
 </body>
-
 </html>

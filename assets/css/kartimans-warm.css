@@ -1,0 +1,489 @@
+/**
+ * THE KARTIMANS BARBERSHOP — WARM MINIMALIST DESIGN SYSTEM
+ * Visual Direction: Warm Minimalist + Modern Editorial
+ * Color Palette: Ivory (#F7F5F0), Charcoal (#1C1C1C), Muted Sage (#737864), Sand (#C7A77A)
+ */
+
+:root {
+  --km-bg-primary: #F7F5F0;
+  --km-bg-secondary: #EFECE5;
+  --km-bg-surface: #FFFFFF;
+  --km-text-main: #1C1C1C;
+  --km-text-muted: #5E5B53;
+  --km-text-light: #8E8A80;
+  --km-accent-sage: #737864;
+  --km-accent-sand: #C7A77A;
+  --km-border: #E2DED5;
+  --km-border-focus: #1C1C1C;
+  --km-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --km-container-max: 1200px;
+  --km-section-spacing: 96px;
+  --km-radius-sm: 6px;
+  --km-radius-md: 10px;
+  --km-radius-lg: 16px;
+  --km-radius-pill: 9999px;
+  --km-shadow-subtle: 0 4px 20px rgba(28, 28, 28, 0.04);
+  --km-shadow-hover: 0 8px 30px rgba(28, 28, 28, 0.08);
+  --km-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--km-bg-primary);
+  color: var(--km-text-main);
+  font-family: var(--km-font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--km-transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.km-container {
+  width: 100%;
+  max-width: var(--km-container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.km-section {
+  padding: var(--km-section-spacing) 0;
+}
+
+.km-section-soft {
+  background-color: var(--km-bg-secondary);
+}
+
+.km-section-white {
+  background-color: var(--km-bg-surface);
+}
+
+.km-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--km-accent-sage);
+  margin-bottom: 12px;
+}
+
+.km-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background-color: var(--km-accent-sage);
+}
+
+.km-heading-lg {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--km-text-main);
+  margin: 0 0 16px 0;
+}
+
+.km-heading-md {
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--km-text-main);
+  margin: 0 0 12px 0;
+}
+
+.km-heading-sm {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--km-text-main);
+  margin: 0 0 8px 0;
+}
+
+.km-lead {
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: var(--km-text-muted);
+  line-height: 1.6;
+  margin: 0 0 28px 0;
+}
+
+.km-section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px auto;
+}
+
+.km-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: var(--km-radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--km-transition);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.km-btn-primary {
+  background-color: var(--km-text-main);
+  color: #FFFFFF !important;
+  border-color: var(--km-text-main);
+}
+
+.km-btn-primary:hover {
+  background-color: #333333;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: var(--km-shadow-hover);
+}
+
+.km-btn-secondary {
+/* Header & Nav */
+.km-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(247, 245, 240, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--km-border);
+}
+
+.km-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+.km-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--km-text-main);
+}
+
+.km-brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--km-border);
+}
+
+.km-nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.km-nav-link {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--km-text-muted);
+}
+
+.km-nav-link:hover {
+  color: var(--km-text-main);
+}
+
+.km-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.km-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--km-text-main);
+  font-size: 24px;
+}
+
+/* Hero Section */
+.km-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 56px;
+  padding: 48px 0;
+}
+
+.km-hero-frame {
+  position: relative;
+  border-radius: var(--km-radius-lg);
+  overflow: hidden;
+  background-color: var(--km-bg-secondary);
+  box-shadow: var(--km-shadow-hover);
+  aspect-ratio: 4 / 5;
+}
+
+.km-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.km-hero-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--km-border);
+  padding: 14px 18px;
+  border-radius: var(--km-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--km-shadow-subtle);
+}
+
+.km-hero-badge-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--km-text-main);
+  margin: 0;
+}
+
+.km-hero-badge-desc {
+  font-size: 12px;
+  color: var(--km-text-muted);
+  margin: 0;
+}
+
+.km-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2E7D32;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Services */
+.km-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.km-service-card {
+  background-color: var(--km-bg-surface);
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--km-transition);
+}
+
+.km-service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--km-text-main);
+  box-shadow: var(--km-shadow-hover);
+}
+
+.km-service-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--km-radius-sm);
+  background-color: var(--km-bg-secondary);
+  color: var(--km-accent-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.km-service-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--km-text-main);
+}
+
+/* Gallery */
+.km-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.km-gallery-item {
+  position: relative;
+  border-radius: var(--km-radius-md);
+  overflow: hidden;
+  background-color: var(--km-bg-secondary);
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--km-border);
+}
+
+.km-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.km-gallery-item:hover .km-gallery-img {
+  transform: scale(1.04);
+}
+
+/* About & Contact */
+.km-about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.km-about-frame {
+  border-radius: var(--km-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--km-border);
+  box-shadow: var(--km-shadow-subtle);
+  aspect-ratio: 4 / 4.5;
+}
+
+.km-contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+}
+
+.km-contact-card {
+  background-color: var(--km-bg-surface);
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.km-map-container {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border-radius: var(--km-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--km-border);
+}
+
+.km-map-container iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: none;
+}
+
+/* Final CTA */
+.km-cta-box {
+  background-color: var(--km-text-main);
+  color: #FFFFFF;
+  border-radius: var(--km-radius-lg);
+  padding: 64px 32px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.km-footer {
+  background-color: var(--km-bg-primary);
+  border-top: 1px solid var(--km-border);
+  padding: 48px 0 32px 0;
+}
+
+.km-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--km-border);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .km-nav-menu {
+    position: fixed;
+    top: 74px;
+    left: 0;
+    right: 0;
+    background-color: var(--km-bg-primary);
+    border-bottom: 1px solid var(--km-border);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    display: none;
+    box-shadow: var(--km-shadow-hover);
+  }
+  .km-nav-menu.is-active { display: flex; }
+  .km-mobile-toggle { display: block; }
+  .km-hero-grid, .km-about-grid, .km-contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .km-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .km-gallery-grid { grid-template-columns: 1fr; }
+  .km-hero-badge { position: static; margin-top: 12px; }
+}
+
+  background-color: transparent;
+  color: var(--km-text-main);
+  border-color: var(--km-border);
+}
+
+.km-btn-secondary:hover {
+  background-color: var(--km-bg-surface);
+  border-color: var(--km-text-main);
+  color: var(--km-text-main);
+  transform: translateY(-2px);
+}
+
+.km-btn-sm {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: var(--km-radius-pill);
+}
