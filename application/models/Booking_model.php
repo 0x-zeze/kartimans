@@ -45,17 +45,12 @@ class Booking_model extends CI_Model
                     'pengalaman'   => '4+ Tahun',
                     'status'       => 'aktif'
                 ],
-                [
-                    'id_barber'    => 3,
-                    'nama'         => 'Rian Pratama',
-                    'spesialisasi' => 'Modern Textured & Beard Styling',
-                    'foto'         => 'assets/img/team/team-3.jpg',
-                    'pengalaman'   => '3+ Tahun',
-                    'status'       => 'aktif'
-                ]
             ];
             $this->db->insert_batch('barber', $initial_barbers);
         }
+
+        // Pastikan Rian Pratama dinonaktifkan dari sistem barber
+        $this->db->where('nama', 'Rian Pratama')->update('barber', ['status' => 'nonaktif']);
 
         $fields = $this->db->list_fields('jasa');
         if (!in_array('barber', $fields)) {

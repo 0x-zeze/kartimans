@@ -279,13 +279,6 @@ $biz = [
             <p style="font-size: 13px; color: var(--km-accent-sage); font-weight: 600; margin: 0 0 6px 0;">Classic Cut & Hot Towel Specialist</p>
             <p style="font-size: 12.5px; color: var(--km-text-light); margin: 0;">Pengalaman 4+ Tahun</p>
           </div>
-
-          <div class="km-barber-card">
-            <img src="<?= base_url('assets/img/team/team-3.jpg'); ?>" alt="Rian Pratama" class="km-barber-avatar">
-            <h4 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700;">Rian Pratama</h4>
-            <p style="font-size: 13px; color: var(--km-accent-sage); font-weight: 600; margin: 0 0 6px 0;">Modern Textured & Beard Styling</p>
-            <p style="font-size: 12.5px; color: var(--km-text-light); margin: 0;">Pengalaman 3+ Tahun</p>
-          </div>
         </div>
       </div>
     </div>
