@@ -19,11 +19,6 @@ $biz = [
     'hours_display'  => "Setiap Hari, 10:00 - 21:00 WIB",
     'established'    => 2019
 ];
-
-// Reusable WhatsApp URL generator
-$get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertanya tentang layanan dan jadwal booking.") use ($biz) {
-    return "https://wa.me/" . $biz['whatsapp_num'] . "?text=" . rawurlencode($message);
-};
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -70,12 +65,13 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           <li><a href="#galeri" class="km-nav-link">Galeri</a></li>
           <li><a href="#tentang" class="km-nav-link">Tentang</a></li>
           <li><a href="#lokasi" class="km-nav-link">Lokasi</a></li>
-          <li><a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link" style="opacity: 0.7;">Login</a></li>
+          <li><a href="<?= base_url('ControllerLogin/register'); ?>" class="km-nav-link" style="color: var(--km-accent); font-weight: 700;">Registrasi</a></li>
+          <li><a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link">Login</a></li>
         </ul>
 
         <div class="km-nav-actions">
-          <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
-            <i class="bi bi-whatsapp"></i> Booking via WhatsApp
+          <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary km-btn-sm">
+            <i class="bi bi-person-plus-fill"></i> Registrasi
           </a>
           <button class="km-mobile-toggle" id="kmMobileToggle" aria-label="Buka Menu">
             <i class="bi bi-list"></i>
@@ -93,14 +89,14 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           <div class="km-eyebrow">The Kartimans Barbershop</div>
           <h1 class="km-heading-lg">Potongan rapi.<br>Gaya percaya diri.</h1>
           <p class="km-lead">
-            Temukan gaya rambut terbaik yang proporsional untukmu dengan sentuhan barber profesional, fasilitas nyaman, dan layanan ramah di pusat Purwokerto.
+            Baru pertama kali ingin potong rambut di The Kartimans? Lakukan registrasi akun Anda untuk menikmati layanan pangkas rambut profesional, fasilitas nyaman, dan pelayanan terbaik di Purwokerto.
           </p>
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary">
-              <i class="bi bi-whatsapp"></i> Booking via WhatsApp
+            <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary">
+              <i class="bi bi-person-plus-fill"></i> Registrasi Sekarang
             </a>
-            <a href="#layanan" class="km-btn km-btn-secondary">
-              Lihat Layanan & Harga
+            <a href="<?= base_url('ControllerLogin'); ?>" class="km-btn km-btn-secondary">
+              <i class="bi bi-box-arrow-in-right"></i> Masuk / Login
             </a>
           </div>
         </div>
@@ -143,8 +139,8 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           </div>
           <div class="km-service-bottom">
             <span class="km-service-price">Rp 25.000</span>
-            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Haircut Signature (Rp 25.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
-              Booking
+            <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary km-btn-sm">
+              <i class="bi bi-person-plus"></i> Registrasi
             </a>
           </div>
         </div>
@@ -158,8 +154,8 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           </div>
           <div class="km-service-bottom">
             <span class="km-service-price">Rp 75.000</span>
-            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Basic Coloring (Rp 75.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
-              Booking
+            <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary km-btn-sm">
+              <i class="bi bi-person-plus"></i> Registrasi
             </a>
           </div>
         </div>
@@ -173,8 +169,8 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           </div>
           <div class="km-service-bottom">
             <span class="km-service-price">Rp 75.000</span>
-            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin konsultasi & booking layanan Bleaching (Rp 75.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
-              Booking
+            <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary km-btn-sm">
+              <i class="bi bi-person-plus"></i> Registrasi
             </a>
           </div>
         </div>
@@ -188,8 +184,8 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           </div>
           <div class="km-service-bottom">
             <span class="km-service-price">Rp 25.000</span>
-            <a href="<?= $get_wa_url("Halo Kartimans, saya ingin booking layanan Clean Shaving (Rp 25.000)."); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary km-btn-sm">
-              Booking
+            <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary km-btn-sm">
+              <i class="bi bi-person-plus"></i> Registrasi
             </a>
           </div>
         </div>
@@ -327,7 +323,7 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           <div class="km-contact-card">
             <div class="km-contact-card-title"><i class="bi bi-chat-dots"></i> Kontak & Media Sosial</div>
             <p class="km-contact-card-val" style="margin-bottom: 8px;">
-              WhatsApp: <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;"><?= $biz['phone_display']; ?></a>
+              Telepon / WA: <?= html_escape($biz['phone_display']); ?>
             </p>
             <p class="km-contact-card-val">
               Instagram: <a href="<?= $biz['instagram_url']; ?>" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;"><?= $biz['instagram']; ?></a>
@@ -346,13 +342,16 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
   <section class="km-section" style="padding-bottom: 72px;">
     <div class="km-container">
       <div class="km-cta-box">
-        <h2 class="km-heading-md">Siap Tampil Lebih Fresh Hari Ini?</h2>
+        <h2 class="km-heading-md">Baru Pertama Kali Cukur di The Kartimans?</h2>
         <p class="km-lead">
-          Amankan slot potong rambut Anda sekarang atau tanyakan ketersediaan kursi langsung ke WhatsApp kami.
+          Silakan registrasi akun Anda sekarang untuk menikmati kemudahan layanan potong rambut dan grooming terbaik kami.
         </p>
         <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-          <a href="<?= $get_wa_url(); ?>" target="_blank" rel="noopener noreferrer" class="km-btn km-btn-primary" style="background-color: #FFFFFF; color: #1C1C1C !important;">
-            <i class="bi bi-whatsapp"></i> Chat WhatsApp Sekarang
+          <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-btn km-btn-primary" style="background-color: #FFFFFF; color: #1C1C1C !important;">
+            <i class="bi bi-person-plus-fill"></i> Registrasi Sekarang
+          </a>
+          <a href="<?= base_url('ControllerLogin'); ?>" class="km-btn km-btn-secondary" style="border-color: #FFFFFF; color: #FFFFFF;">
+            <i class="bi bi-box-arrow-in-right"></i> Masuk / Login
           </a>
         </div>
       </div>
@@ -374,7 +373,8 @@ $get_wa_url = function($message = "Halo Kartimans Barbershop, saya ingin bertany
           <a href="#galeri" class="km-nav-link">Galeri</a>
           <a href="#tentang" class="km-nav-link">Tentang</a>
           <a href="#lokasi" class="km-nav-link">Lokasi</a>
-          <a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link" style="opacity: 0.6;">Login</a>
+          <a href="<?= base_url('ControllerLogin/register'); ?>" class="km-nav-link" style="color: var(--km-accent); font-weight: 700;">Registrasi</a>
+          <a href="<?= base_url('ControllerLogin'); ?>" class="km-nav-link" style="opacity: 0.8;">Login</a>
         </div>
       </div>
 
