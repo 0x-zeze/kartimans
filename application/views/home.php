@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * THE KARTIMANS BARBERSHOP — CENTRALIZED BUSINESS CONFIGURATION
+ * THE KARTIMANS HAIRCUT — CENTRALIZED BUSINESS CONFIGURATION
  * Verified Data Sources: data.sql, assets, verified location & contact
  */
 $biz = [
-    'name'           => "The Kartimans Barbershop",
-    'brand_title'    => "Kartiman's Barbershop | Potong Rambut & Grooming Purwokerto",
+    'name'           => "The Kartimans Haircut",
+    'brand_title'    => "The Kartimans Haircut | Potong Rambut & Grooming Purwokerto",
     'tagline'        => "Potongan rapi. Gaya percaya diri.",
     'phone_display'  => "0882005518510",
     'whatsapp_num'   => "62882005518510", // Verified without + or special chars
@@ -26,7 +26,7 @@ $biz = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= html_escape($biz['brand_title']); ?></title>
-  <meta name="description" content="The Kartimans Barbershop Purwokerto — Barbershop pria modern dengan layanan potong rambut rapi, coloring, bleaching, dan shaving profesional.">
+  <meta name="description" content="The Kartimans Haircut Purwokerto — Barbershop pria modern dengan layanan potong rambut rapi, coloring, bleaching, dan shaving profesional.">
   <meta name="theme-color" content="#F7F5F0">
 
   <!-- Open Graph -->
@@ -86,7 +86,7 @@ $biz = [
     <div class="km-container">
       <div class="km-hero-grid">
         <div>
-          <div class="km-eyebrow">The Kartimans Barbershop</div>
+          <div class="km-eyebrow">The Kartimans Haircut</div>
           <h1 class="km-heading-lg">Potongan rapi.<br>Gaya percaya diri.</h1>
           <p class="km-lead">
             Baru pertama kali ingin potong rambut di The Kartimans? Lakukan registrasi akun Anda untuk menikmati layanan pangkas rambut profesional, fasilitas nyaman, dan pelayanan terbaik di Purwokerto.
@@ -103,7 +103,7 @@ $biz = [
 
         <div class="km-hero-visual">
           <div class="km-hero-frame">
-            <img src="<?= base_url('assets/img/barber.jpg'); ?>" alt="Interior The Kartimans Barbershop" class="km-hero-img">
+            <img src="<?= base_url('assets/img/barber.jpg'); ?>" alt="Interior The Kartimans Haircut" class="km-hero-img">
             <div class="km-hero-badge">
               <div>
                 <p class="km-hero-badge-title"><span class="km-status-dot"></span> Buka Hari Ini</p>
@@ -356,7 +356,7 @@ $biz = [
     <div class="km-container">
       <div class="km-footer-inner">
         <div>
-          <h3 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800;">The Kartimans Barbershop</h3>
+          <h3 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800;">The Kartimans Haircut</h3>
           <p style="margin: 0; font-size: 13.5px; color: var(--km-text-muted);">Good Looking, Good Feels — Purwokerto, Jawa Tengah</p>
         </div>
 

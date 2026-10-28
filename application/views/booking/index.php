@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= html_escape($title); ?></title>
-  <meta name="description" content="Booking jadwal potong rambut online di Kartimans Barbershop Purwokerto. Cepat, praktis, dan tanpa antre.">
+  <meta name="description" content="Booking jadwal potong rambut online di The Kartimans Haircut Purwokerto. Cepat, praktis, dan tanpa antre.">
 
   <!-- Favicons -->
   <link href="<?= base_url('assets/img/kartimans1.png'); ?>" rel="icon">
@@ -29,7 +29,7 @@
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
         <a href="<?= base_url(); ?>" class="brand-logo">
-          <img src="<?= base_url('assets/img/kartimans1.png'); ?>" alt="Kartimans Barbershop Logo">
+          <img src="<?= base_url('assets/img/kartimans1.png'); ?>" alt="The Kartimans Haircut Logo">
           <span>KARTIMANS</span>
         </a>
         <a href="<?= base_url(); ?>" class="btn-nav-back">

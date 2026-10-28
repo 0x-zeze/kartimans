@@ -1,5 +1,5 @@
 /**
- * Kartimans Barbershop - Modern Minimalist Booking Interaction Engine
+ * The Kartimans Haircut - Modern Minimalist Booking Interaction Engine
  */
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -25,7 +25,7 @@
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
         <a href="<?= base_url(); ?>" class="brand-logo">
-          <img src="<?= base_url('assets/img/kartimans1.png'); ?>" alt="Kartimans Barbershop Logo">
+          <img src="<?= base_url('assets/img/kartimans1.png'); ?>" alt="The Kartimans Haircut Logo">
           <span>KARTIMANS</span>
         </a>
         <a href="<?= base_url(); ?>" class="btn-nav-back">
@@ -84,7 +84,7 @@
       </div>
 
       <?php
-        $wa_msg = urlencode("Halo Kartimans Barbershop, saya ingin konfirmasi booking saya:\n" .
+        $wa_msg = urlencode("Halo The Kartimans Haircut, saya ingin konfirmasi booking saya:\n" .
           "- Kode: " . $booking->kode . "\n" .
           "- Nama: " . $booking->nama . "\n" .
           "- Layanan: " . $booking->jenis . "\n" .

@@ -1,6 +1,6 @@
-# Kartimans Barbershop
+# The Kartimans Haircut
 
-Sistem informasi **Kartimans Barbershop** (Purwokerto) untuk website publik, booking/pesanan, dan panel admin.
+Sistem informasi **The Kartimans Haircut** (Purwokerto) untuk website publik, booking/pesanan, dan panel admin.
 
 Aplikasi ini mengelola transaksi layanan, data user, daftar harga, dan laporan. UI admin memakai tema hitam/putih/merah di atas Bootstrap 4.
 

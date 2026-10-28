@@ -1,11 +1,11 @@
 <div class="auth-page">
     <div class="auth-logo">
-        <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="Kartimans Barbershop">
+        <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="The Kartimans Haircut">
     </div>
 
     <div class="auth-card">
         <h1 class="auth-title">Register</h1>
-        <p class="auth-subtitle">Kartimans Barbershop</p>
+        <p class="auth-subtitle">The Kartimans Haircut</p>
 
         <form action="<?= base_url('ControllerLogin/register'); ?>" method="post">
             <div class="form-group mb-3">

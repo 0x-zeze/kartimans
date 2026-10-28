@@ -15,7 +15,7 @@ $SERVICE_COLUMN_OVERRIDE = isset($SERVICE_COLUMN_OVERRIDE) ? $SERVICE_COLUMN_OVE
 
 // Identitas usaha untuk header laporan
 $LOGO_URL   = isset($LOGO_URL)   ? $LOGO_URL   : (function_exists('base_url') ? base_url('assets/img/kartimans1.png') : 'assets/img/kartimans1.png');
-$SHOP_NAME  = isset($SHOP_NAME)  ? $SHOP_NAME  : 'Kartimans Barbershop';
+$SHOP_NAME  = isset($SHOP_NAME)  ? $SHOP_NAME  : 'The Kartimans Haircut';
 $SHOP_ADDR  = isset($SHOP_ADDR)  ? $SHOP_ADDR  : 'Karangkobar, Purwanegara, Purwokerto Timur, Banyumas, Jawa Tengah 53116';
 $OWNER_NAME = isset($OWNER_NAME) ? $OWNER_NAME : 'Bagus Pamungkas';
 
@@ -191,7 +191,7 @@ $bulanNama = (isset($namaBulanIndo[$mNum]) ? $namaBulanIndo[$mNum] : date('F', s
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <div>
       <h1 class="h3 mb-0 text-gray-800">Laporan</h1>
-      <p class="page-kicker mb-0">Kartimans Barbershop</p>
+      <p class="page-kicker mb-0">The Kartimans Haircut</p>
     </div>
 
     <!-- Toolbar Filter & Tombol Export PNG -->

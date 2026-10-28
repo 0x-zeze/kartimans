@@ -3,7 +3,7 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
 
         <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="Kartimans Barbershop">
+            <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="The Kartimans Haircut">
         </div>
         <div class="sidebar-brand-text mx-3">Kartimans</div>
     </a>

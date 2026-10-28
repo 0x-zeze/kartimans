@@ -20,7 +20,7 @@ class Booking extends CI_Controller
         $barbers = $this->Booking_model->get_active_barbers();
 
         $data = [
-            'title'   => 'Booking Jadwal Cukur - Kartimans Barbershop',
+            'title'   => 'Booking Jadwal Cukur - The Kartimans Haircut',
             'service' => $service,
             'barbers' => $barbers,
             'today'   => date('Y-m-d')

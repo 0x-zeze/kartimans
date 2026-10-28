@@ -1,6 +1,6 @@
 <div class="auth-page">
     <div class="auth-logo">
-        <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="Kartimans Barbershop">
+        <img src="<?= base_url('assets/img/logos.jpeg'); ?>" alt="The Kartimans Haircut">
     </div>
 
     <div class="auth-card">
@@ -18,7 +18,7 @@
         <?php } ?>
 
         <h1 class="auth-title">Login</h1>
-        <p class="auth-subtitle">Kartimans Barbershop</p>
+        <p class="auth-subtitle">The Kartimans Haircut</p>
 
         <form action="<?= base_url('ControllerLogin'); ?>" method="post">
             <div class="auth-field mb-3">

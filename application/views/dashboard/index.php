@@ -3,7 +3,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div>
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <p class="page-kicker">Kartimans Barbershop</p>
+            <p class="page-kicker">The Kartimans Haircut</p>
         </div>
     </div>
 
@@ -258,7 +258,7 @@
 
         try{
           var ask = await Swal.fire({
-            title: 'Kartimans Barbershop',
+            title: 'The Kartimans Haircut',
             text: 'Batalkan pesanan ini?',
             icon: 'warning',
             showCancelButton: true,

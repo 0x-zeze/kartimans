@@ -3,7 +3,7 @@
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
          <div>
              <h1 class="h3 mb-0 text-gray-800">Edit User</h1>
-             <p class="page-kicker mb-0">Kartimans Barbershop</p>
+             <p class="page-kicker mb-0">The Kartimans Haircut</p>
          </div>
      </div>
 

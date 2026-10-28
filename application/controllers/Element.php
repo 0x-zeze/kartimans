@@ -6,7 +6,7 @@ use Mpdf\Mpdf;
 class Element extends CI_Controller
 {   
 
-    private $reportTitle      = 'Kartimans Barbershop';
+    private $reportTitle      = 'The Kartimans Haircut';
     private $reportAddress    = 'Karangkobar, Purwanegara, Purwokerto Timur, Banyumas Regency, Central Java 53116';
     private $ownerName        = 'Bagus Pamungkas';
     private $ownerSignature   = 'assets/img/ttd.png';
